@@ -1,18 +1,35 @@
-## Getting Started
+## The problem
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Given a string s of zeros and ones, return the maximum score after splitting the string into two non-empty substrings (i.e. left substring and right substring).
 
-## Folder Structure
+The score after splitting a string is the number of zeros in the left substring plus the number of ones in the right substring.
 
-The workspace contains two folders by default, where:
+ 
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Example 1:
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Input: s = "011101"
+Output: 5 
+Explanation: 
+All possible ways of splitting s into two non-empty substrings are:
+left = "0" and right = "11101", score = 1 + 4 = 5 
+left = "01" and right = "1101", score = 1 + 3 = 4 
+left = "011" and right = "101", score = 1 + 2 = 3 
+left = "0111" and right = "01", score = 1 + 1 = 2 
+left = "01110" and right = "1", score = 2 + 1 = 3
+Example 2:
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+Input: s = "00111"
+Output: 5
+Explanation: When left = "00" and right = "111", we get the maximum score = 2 + 3 = 5
+Example 3:
 
-## Dependency Management
+Input: s = "1111"
+Output: 3
+ 
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Constraints:
+
+2 <= s.length <= 500
+The string s consists of characters '0' and '1' only.
+
