@@ -3,32 +3,26 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ConcurrentModificationException;
 import java.util.List;
-import java.util.stream.Collectors;
-
-
 
 public class App {
 
     public static void main(String[] args) throws Exception {
 
-      
-        String [] s ={"1,1,1,1"};
-        String teste = "11111";
-        String replaced = teste.replace("", ",");
-        String replacedf= replaced.replaceFirst(",", "");
-     
-        System.out.println(teste.replace("", ","));
-        int toNum = Integer.parseInt(replacedf.substring(0, replacedf.length()-1));
-        
-        System.out.println();
-   
+        String beforeReplace = "00111";
 
-    List<String> listArr = Arrays.asList(s);
+        String replaced = beforeReplace.replace("", ",");
+        String replacedf = replaced.replaceFirst(",", "");
+        String out = replacedf.substring(0, replacedf.length() - 1);
+
+        String[] build = out.split(",");
+
+        List<String> listArr = Arrays.asList(build);
         List<String> correct_order = new ArrayList<String>();
         try {
             if (listArr.size() >= 2 && listArr.size() <= 500) {
-                for (Integer num : listArr.stream().map(Integer::parseInt).collect(Collectors.toList())) {
-                    if (num <= 1 && num >= 0) {
+                for (String num : listArr) {
+                    if (num.equals("0") || num.equals("1")) {
+
                         correct_order.add(num.toString());
                     } else {
                         System.out.println("entrada invalida");
@@ -40,28 +34,32 @@ public class App {
         } catch (ConcurrentModificationException c) {
             throw new ConcurrentModificationException(c);
         }
+       
+        int total =0;
+        for (int i=0; i < correct_order.size() -1 ;i++) {
 
-        List<String> left = correct_order.subList(0, 1);
+            int points = 0;
+            for (int j = 0; j <= i; j++) {
+                if (correct_order.get(j).equals("0")) {
+                    points++;
+                  
+                }
 
-        List<String> right = correct_order.subList(1, correct_order.size());
-        int pointsFrom0 = 0;
-        int pointsFrom1 = 0;
-        for (String x : left) {
-            if (x.contains("0")) {
-                pointsFrom0++;
             }
+        
+            for (int j = i + 1; j < correct_order.size(); j++) {
+                if (correct_order.get(i).equals("1")) {
+                    points++;
+              
+                }
+
+            }
+          
+          total = Math.max(total, points);
+
 
         }
-        for (String x : right) {
-            if (x.contains("1")) {
-                pointsFrom1++;
-            }
-        }
-
-        System.out.println(pointsFrom0 + pointsFrom1);
-        System.out.println("left assign " + left);
-        System.out.println("right assign " + right);
-
+        System.out.println(total);
     }
 
 }
