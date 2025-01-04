@@ -23,7 +23,7 @@ public class App {
                 for (String num : listArr) {
                     if (num.equals("0") || num.equals("1")) {
 
-                        correct_order.add(num.toString());
+                        correct_order.add(num);
                     } else {
                         System.out.println("entrada invalida");
                     }
@@ -40,21 +40,21 @@ public class App {
 
             int points = 0;
             for (int j = 0; j <= i; j++) {
-                if (correct_order.get(j).equals("0")) {
+                if (correct_order.get(j).contains("0")) {
                     points++;
-                  
+                
                 }
 
             }
         
             for (int j = i + 1; j < correct_order.size(); j++) {
-                if (correct_order.get(i).equals("1")) {
+                if (correct_order.get(j).contains("1")) {
                     points++;
-              
+               
                 }
 
             }
-          
+       
           total = Math.max(total, points);
 
 
