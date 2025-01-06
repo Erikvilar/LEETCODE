@@ -41,8 +41,8 @@ public class App {
 
         Collections.shuffle(s);
         StringBuilder t = new StringBuilder();
-            int count =3;
-        for (int i = 0; i < count; i++) {
+          
+        for (int i = 0; i < 3; i++) {
     
             t.append(s.get(i));
 
