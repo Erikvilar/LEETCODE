@@ -9,7 +9,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        System.out.println(countPalindromicSubsequence("aabca"));
+        System.out.println(countPalindromicSubsequence("aaabbca"));
     }
 
     public static int countPalindromicSubsequence(String s) {
@@ -33,25 +33,19 @@ public class App {
         }
         System.out.println(norepeat);
 
-        return result.size();
+        return norepeat.size();
 
     }
 
     private static String looping(List<String> s, int count) {
         StringBuilder t = new StringBuilder(3);
         for (int i = 0; i < s.size(); i++) {
-
             if (s.get(i).equals(s.get(count - 1)) && i != count - 1) {
-
-                t.append(s.get(i) + 
-                s.get((int) Math.round((Math.floor(count - 1 + i) / 2))+1) 
-                + s.get(count - 1));
-                System.out.println(Math.round((Math.floor(count - 1 + i) / 2)));
-                return t.toString();
-                
+                return s.get(i) +s.get((int) Math.round((Math.floor(count - 1 + i) / 2)))
+                + s.get(count - 1);
             }
-
         }
+
         return t.toString();
     }
 
