@@ -8,7 +8,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        String beforeReplace = "00111";
+        String beforeReplace = "001111";
 
         String replaced = beforeReplace.replace("", ",");
         String replacedf = replaced.replaceFirst(",", "");
